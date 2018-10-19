@@ -1,0 +1,6 @@
+*.py[cod]
+instance/
+.webassets-cache
+__pycache__/
+*$py.class
+*.db
