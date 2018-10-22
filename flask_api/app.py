@@ -1,5 +1,5 @@
 import click
-from flask import Flask
+from flask import Flask, redirect, url_for
 from .config import *
 from .Controllers import Apiv1Routes, ErrorRoutes
 from .Models import User, Database 
@@ -15,6 +15,11 @@ Database.ma.init_app(app)
 # Blueprint register
 app.register_blueprint(Apiv1Routes.bp, url_prefix='/api/v1')
 app.register_blueprint(ErrorRoutes.bp)
+
+# This can be deleted!
+@app.route("/")
+def _redirect():
+    return redirect(url_for('api_v1.root'))
 
 # CLI
 @app.cli.command()
